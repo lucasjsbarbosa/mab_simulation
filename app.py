@@ -103,21 +103,6 @@ if len(st.session_state.history) > 0:
     )
     st.plotly_chart(fig_area, use_container_width=True)
 
-# Gráfico de barras: taxa de sucesso estimada
-st.markdown("#### Taxa de sucesso estimada por botão")
-fig2 = go.Figure()
-fig2.add_trace(go.Bar(
-    x=[f"Botão {i+1}" for i in range(N_ARMS)],
-    y=st.session_state.mab.values,
-    marker_color=['#1f77b4', '#ff7f0e', '#2ca02c']
-))
-fig2.update_layout(
-    yaxis=dict(range=[0, 1]),
-    height=300,
-    margin=dict(l=20, r=20, t=30, b=20)
-)
-st.plotly_chart(fig2, use_container_width=True)
-
 # Gráfico de linha: evolução da taxa de sucesso média (visual multiplicado)
 if st.session_state.cumulative_rewards:
     st.markdown("#### Evolução da taxa de sucesso média")
@@ -137,6 +122,22 @@ if st.session_state.cumulative_rewards:
         margin=dict(l=20, r=20, t=30, b=20)
     )
     st.plotly_chart(fig3, use_container_width=True)
+
+
+# Gráfico de barras: taxa de sucesso estimada
+st.markdown("#### Taxa de sucesso estimada por botão")
+fig2 = go.Figure()
+fig2.add_trace(go.Bar(
+    x=[f"Botão {i+1}" for i in range(N_ARMS)],
+    y=st.session_state.mab.values,
+    marker_color=['#1f77b4', '#ff7f0e', '#2ca02c']
+))
+fig2.update_layout(
+    yaxis=dict(range=[0, 1]),
+    height=300,
+    margin=dict(l=20, r=20, t=30, b=20)
+)
+st.plotly_chart(fig2, use_container_width=True)
 
 # Tabela de dados simulados por botão
 st.markdown("#### Dados simulados por botão")
