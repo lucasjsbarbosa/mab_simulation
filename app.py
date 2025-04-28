@@ -3,7 +3,7 @@ import numpy as np
 import plotly.graph_objects as go
 import pandas as pd
 
-PROBS = [0.4, 0.5, 0.6]
+PROBS = [0.5, 0.5, 0.5]
 N_ARMS = len(PROBS)
 MULTIPLICADOR_VISITANTES = 1000  # Fixo, sem sidebar
 
