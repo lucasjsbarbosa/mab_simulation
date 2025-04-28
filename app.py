@@ -30,18 +30,20 @@ class ThompsonSamplingMAB:
 st.set_page_config(page_title="MAB Simulador", layout="centered")
 st.title("🎰 Simulador Multi-Armed Bandit (MAB) - Thompson Sampling")
 
-# Introdução didática personalizada
-st.markdown("""
-<div style="background-color:#222831; padding:18px; border-radius:10px; margin-bottom:20px;">
-<b>Como funciona este simulador?</b><br><br>
-Imagine que você é responsável por um site e quer descobrir qual de três opções (por exemplo, três banners, layouts ou promoções) gera mais cliques ou conversões.<br><br>
-Cada botão abaixo representa uma dessas opções. A cada clique, você simula a escolha de um visitante do site. O algoritmo <b>Multi-Armed Bandit</b> (MAB) vai aprendendo, com base nos resultados dos cliques, qual opção parece ser a mais eficiente.<br><br>
-O modelo equilibra <b>exploração</b> (testar todas as opções para aprender) e <b>aproveitamento</b> (focar na opção que está performando melhor até agora).<br><br>
-Os gráficos mostram, de forma visual, como o modelo distribui o tráfego entre as opções e como ele aprende ao longo do tempo.<br>
-<b>Cada clique simula 1000 visitantes para deixar a visualização mais interessante!</b><br><br>
-<i>Observação:</i> Conforme o número de cliques aumenta, a <b>taxa de sucesso estimada</b> de cada opção tende a se estabilizar. Isso significa que, quanto mais dados o modelo coleta, mais difícil fica mudar a estimativa — afinal, ele está mais confiante sobre o desempenho de cada opção. Por isso, mudanças bruscas nas taxas são mais comuns no início, quando há poucos dados, e vão ficando raras à medida que o experimento avança.
-</div>
-""", unsafe_allow_html=True)
+# Introdução didática em um expander
+with st.expander("Como funciona este simulador? (clique para ver/ocultar)"):
+    st.markdown("""
+    Imagine que você é responsável por um site e quer descobrir qual de três opções (por exemplo, três banners, layouts ou promoções) gera mais cliques ou conversões.
+
+    Cada botão abaixo representa uma dessas opções. A cada clique, você simula a escolha de um visitante do site. O algoritmo **Multi-Armed Bandit** (MAB) vai aprendendo, com base nos resultados dos cliques, qual opção parece ser a mais eficiente.
+
+    O modelo equilibra **exploração** (testar todas as opções para aprender) e **aproveitamento** (focar na opção que está performando melhor até agora).
+
+    Os gráficos mostram, de forma visual, como o modelo distribui o tráfego entre as opções e como ele aprende ao longo do tempo.
+    **Cada clique simula 1000 visitantes para deixar a visualização mais interessante!**
+
+    _Observação:_ Conforme o número de cliques aumenta, a **taxa de sucesso estimada** de cada opção tende a se estabilizar. Isso significa que, quanto mais dados o modelo coleta, mais difícil fica mudar a estimativa — afinal, ele está mais confiante sobre o desempenho de cada opção. Por isso, mudanças bruscas nas taxas são mais comuns no início, quando há poucos dados, e vão ficando raras à medida que o experimento avança.
+    """)
 
 if 'mab' not in st.session_state:
     st.session_state.mab = ThompsonSamplingMAB(N_ARMS)
@@ -158,16 +160,16 @@ with st.expander("Como funciona o Thompson Sampling?"):
     - Os gráficos mostram como o tráfego e as taxas de sucesso evoluem conforme o modelo aprende.
     - Os números exibidos são multiplicados por 1000 apenas para visualização, mas o aprendizado do modelo é feito clique a clique.
 
-    <b>Sobre a estabilização das taxas:</b><br>
+    **Sobre a estabilização das taxas:**
     Conforme o número de cliques aumenta, a taxa de sucesso estimada de cada opção tende a se estabilizar. Isso acontece porque, com mais dados, o modelo fica mais confiante sobre o desempenho de cada botão. Mudanças bruscas nas taxas são comuns no início, mas vão ficando raras à medida que o experimento avança.
-    """, unsafe_allow_html=True)
+    """)
 
-# Rodapé com LinkedIn e autoria
+# Rodapé com LinkedIn e autoria (ajuste o link abaixo para o seu repositório)
 st.markdown("""
 <br>
 <hr style="border:1px solid #444;">
 <div style="display:flex; align-items:center; justify-content:center;">
-    <img src="https://raw.githubusercontent.com/lucas-barbosa-a00302167/linkedin-logo/main/LinkedIn_logo_initials.png" width="32" style="margin-right:10px; vertical-align:middle;">
+    <img src="https://raw.githubusercontent.com/SEU_USUARIO/SEU_REPOSITORIO/main/LinkedIn_logo_initials.png" width="32" style="margin-right:10px; vertical-align:middle;">
     <a href="https://www.linkedin.com/in/lucas-barbosa-a00302167/" target="_blank" style="font-size:17px; text-decoration:none; color:#0e76a8; font-weight:bold;">
         Desenvolvido por Lucas Barbosa
     </a>
